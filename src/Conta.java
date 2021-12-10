@@ -15,28 +15,28 @@ public class Conta {
     }
 
     //Métodos de get's e set's.
-    public int getagencia() {
+    public int getAgencia() {
         return this.agencia;
     }
 
-    public int getnumero() {
+    public int getNumero() {
         return this.numero;
     }
 
-    public double getsaldo() {
+    public double getSaldo() {
         return this.saldo;
     }
 
-    public Cliente getcliente() {
+    public Cliente getCliente() {
         return this.cliente;
     }
 
-    public static int getquantidadeDeContas() {
+    public static int getQuantidadeDeContas() {
         return quantidadeDeContas;
     }
 
     //Método de depósito.
-    public void depositar(float valor) {
+    public void depositar(double valor) {
         if(valor > 0){
             this.saldo = this.saldo + valor;
             System.out.println("Valor depositado:" + valor); 
@@ -46,25 +46,23 @@ public class Conta {
     }
 
     //Método de saque.
-    public void sacar(float valor) {
-        if(valor <= this.saldo) {
+    public boolean sacar(double valor) {
+        if (valor > 0 && valor <= this.saldo) {
             this.saldo = this.saldo - valor;
             System.out.println("Valor sacado: " + valor); 
+            return true;
         }else{
             System.out.println("Saque não realizado. Valor abaixo do seu saldo atual, que é de: " + this.saldo);
             System.out.println("Saldo atual: " + this.saldo);
+            return false;
         }
     }
 
     //Método de transferencia.
-    public float transferencia(float valor) {
-        if(valor <= this.saldo) {
-            this.saldo -= valor;
-            System.out.println("Tranferência concluida com sucesso.");
-            return valor;
-        }else{
-            System.out.println("Saldo insuficiente para transferência.");
-            return 0;
+    public void transferencia(double valor, Conta contaDestino) {
+        boolean saqueComSucesso = this.sacar(valor);
+        if (saqueComSucesso) {
+            contaDestino.depositar(valor);
         }
     }
 }

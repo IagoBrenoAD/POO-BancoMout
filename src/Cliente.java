@@ -9,17 +9,18 @@ public class Cliente {
     private String endereco;
 
     //Construtor dos clientes.
-    public Cliente(String nome, String CPF, String endereco) {
+    public Cliente(String nome, String CPF, LocalDate dataNascimento, String endereco) {
         this.nome = nome;
         this.CPF = CPF;
+        this.dataNascimento = dataNascimento;
         this.endereco = endereco;
     }
 
     //Métodos de get's e set's.
-    public String getnome() {
+    public String getNome() {
         return this.nome;
     }
-    public void setnome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
         System.out.println("Nome trocado. Seu nome é: " + this.nome);
     }
@@ -28,10 +29,14 @@ public class Cliente {
         return this.CPF;
     }
 
-    public String getendereco() {
+    public LocalDate getDataNascimento() {
+        return this.dataNascimento;
+    }
+
+    public String getEndereco() {
         return endereco;
     }
-    public void setendereco(String endereco) {
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
         System.out.println("Endereço trocado. Seu endereço é: " + this.endereco);
     }
