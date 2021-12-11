@@ -9,6 +9,14 @@ public class TestaApp {
         //Cliente 1.
         Cliente cliente1 = new Cliente("Iago", "0001234", LocalDate.of(2003, 5, 28), "Rua da luz");
 
+        Endereco endereco1 = new Endereco("iago@", 71, "Junco", "Picos", "89");
+        System.out.println("----------Dados de endereco----------");
+        System.out.println("Seu logradouro é: " + endereco1.getLogradouro());
+        System.out.println("Seu número é: " + endereco1.getNumero());
+        System.out.println("Seu bairro e cidade são: " + endereco1.getBairro() + ", " + endereco1.getCidade());
+        System.out.println("Seu uf é: " + endereco1.getUf());
+        System.out.println("----------Fim de dados----------");
+
         //Conta 1 do cliente 1.
         Conta conta1 = new Conta(123, 678, cliente1);
         System.out.println("Quantidade de contas do Banco Maut: " + Conta.getQuantidadeDeContas());
