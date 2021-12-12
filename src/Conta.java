@@ -14,6 +14,11 @@ public class Conta {
         this.cliente = cliente;
     }
 
+    //Método de notificação.
+    private void enviarNotificacao(String operacao, double valor){
+        new Notificacao().enviarEmail(operacao, valor);
+    }
+    
     //Métodos de get's e set's.
     public int getAgencia() {
         return this.agencia;
@@ -40,6 +45,7 @@ public class Conta {
         if(valor > 0){
             this.saldo = this.saldo + valor;
             System.out.println("Valor depositado:" + valor); 
+            this.enviarNotificacao("Depósito", valor);
         }else{
             System.out.println("Valor negativo não aceito");
         }
@@ -50,6 +56,7 @@ public class Conta {
         if (valor > 0 && valor <= this.saldo) {
             this.saldo = this.saldo - valor;
             System.out.println("Valor sacado: " + valor); 
+            this.enviarNotificacao("Saque", valor);
             return true;
         }else{
             System.out.println("Saque não realizado. Valor abaixo do seu saldo atual, que é de: " + this.saldo);
@@ -63,6 +70,7 @@ public class Conta {
         boolean saqueComSucesso = this.sacar(valor);
         if (saqueComSucesso) {
             contaDestino.depositar(valor);
+            this.enviarNotificacao("Transferência", valor);
         }
     }
 }

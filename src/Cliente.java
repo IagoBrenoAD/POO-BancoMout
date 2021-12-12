@@ -1,15 +1,14 @@
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Cliente {
 //Definindo atributos.
     private String nome;
     private String CPF;
     private LocalDate dataNascimento;
-    private String endereco;
+    private Endereco endereco;
 
     //Construtor dos clientes.
-    public Cliente(String nome, String CPF, LocalDate dataNascimento, String endereco) {
+    public Cliente(String nome, String CPF, LocalDate dataNascimento, Endereco endereco) {
         this.nome = nome;
         this.CPF = CPF;
         this.dataNascimento = dataNascimento;
@@ -33,10 +32,10 @@ public class Cliente {
         return this.dataNascimento;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
         System.out.println("Endereço trocado. Seu endereço é: " + this.endereco);
     }

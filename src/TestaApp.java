@@ -6,15 +6,15 @@ public class TestaApp {
         //Início do contador de contas.
         System.out.println("Abrindo o banco Maut. Quantidade de contas: " + Conta.getQuantidadeDeContas());
 
+        //Endereço 1.
         //Cliente 1.
-        Cliente cliente1 = new Cliente("Iago", "0001234", LocalDate.of(2003, 5, 28), "Rua da luz");
+        Cliente cliente1 = new Cliente("Iago", "0001234", LocalDate.of(2003, 5, 28), new Endereco("log1", 71, "Jurassic", "Sorna", "89"));
 
-        Endereco endereco1 = new Endereco("iago@", 71, "Junco", "Picos", "89");
         System.out.println("----------Dados de endereco----------");
-        System.out.println("Seu logradouro é: " + endereco1.getLogradouro());
-        System.out.println("Seu número é: " + endereco1.getNumero());
-        System.out.println("Seu bairro e cidade são: " + endereco1.getBairro() + ", " + endereco1.getCidade());
-        System.out.println("Seu uf é: " + endereco1.getUf());
+        System.out.println("Seu logradouro é: " + cliente1.getEndereco().getLogradouro());
+        System.out.println("Seu número é: " + cliente1.getEndereco().getNumero());
+        System.out.println("Seu bairro e cidade são: " + cliente1.getEndereco().getBairro() + ", " + cliente1.getEndereco().getCidade());
+        System.out.println("Seu uf é: " + cliente1.getEndereco().getUf());
         System.out.println("----------Fim de dados----------");
 
         //Conta 1 do cliente 1.
@@ -37,7 +37,7 @@ public class TestaApp {
 
 
         //Cliente 2.
-        Cliente cliente2 = new Cliente("Talita", "830289", LocalDate.of(1999, 12, 28), "Rua do rio");
+        Cliente cliente2 = new Cliente("Talita", "830289", LocalDate.of(1999, 12, 28), new Endereco("log2", 490, "Junco", "Picos", "87"));
 
         //Conta 1 do cliente 2.
         Conta conta2 = new Conta(456, 90, cliente2);
