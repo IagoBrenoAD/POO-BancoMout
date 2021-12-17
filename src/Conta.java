@@ -1,8 +1,8 @@
-public class Conta {
+abstract public class Conta {
 // Definindo atributos.
     private int agencia;
     private int numero;
-    private double saldo;
+    protected double saldo;
     private Cliente cliente;
     private static int quantidadeDeContas;
 
@@ -15,7 +15,7 @@ public class Conta {
     }
 
     //Método de notificação.
-    private void enviarNotificacao(String operacao, double valor){
+    protected void enviarNotificacao(String operacao, double valor){
         new Notificacao().enviarEmail(operacao, valor);
     }
     
@@ -52,18 +52,7 @@ public class Conta {
     }
 
     //Método de saque.
-    public boolean sacar(double valor) {
-        if (valor > 0 && valor <= this.saldo) {
-            this.saldo = this.saldo - valor;
-            System.out.println("Valor sacado: " + valor); 
-            this.enviarNotificacao("Saque", valor);
-            return true;
-        }else{
-            System.out.println("Saque não realizado. Valor abaixo do seu saldo atual, que é de: " + this.saldo);
-            System.out.println("Saldo atual: " + this.saldo);
-            return false;
-        }
-    }
+    abstract public boolean sacar(double valor);
 
     //Método de transferencia.
     public void transferencia(double valor, Conta contaDestino) {

@@ -8,7 +8,7 @@ public class TestaApp {
 
         //Endereço 1.
         //Cliente 1.
-        Cliente cliente1 = new Cliente("Iago", "0001234", LocalDate.of(2003, 5, 28), new Endereco("log1", 71, "Jurassic", "Sorna", "89"));
+        Cliente cliente1 = new Cliente("Iago", "0001234", LocalDate.of(2003, 5, 28), new Endereco("log1", 71, "World", "Nublar", "JW"));
 
         System.out.println("----------Dados de endereco----------");
         System.out.println("Seu logradouro é: " + cliente1.getEndereco().getLogradouro());
@@ -18,7 +18,7 @@ public class TestaApp {
         System.out.println("----------Fim de dados----------");
 
         //Conta 1 do cliente 1.
-        Conta conta1 = new Conta(123, 678, cliente1);
+        Conta conta1 = new ContaPoupanca(123, 678, cliente1);
         System.out.println("Quantidade de contas do Banco Maut: " + Conta.getQuantidadeDeContas());
 
         System.out.println("----------Informações da conta do cliente1----------");
@@ -37,10 +37,10 @@ public class TestaApp {
 
 
         //Cliente 2.
-        Cliente cliente2 = new Cliente("Talita", "830289", LocalDate.of(1999, 12, 28), new Endereco("log2", 490, "Junco", "Picos", "87"));
+        Cliente cliente2 = new Cliente("Talita", "830289", LocalDate.of(1999, 12, 28), new Endereco("log2", 490, "Park", "Sorna", "JP"));
 
         //Conta 1 do cliente 2.
-        Conta conta2 = new Conta(456, 90, cliente2);
+        Conta conta2 = new ContaCorrente(456, 90, cliente2);
         System.out.println("Quantidade de contas do Banco Maut: " + Conta.getQuantidadeDeContas());
 
 
@@ -49,7 +49,7 @@ public class TestaApp {
 
 
         //Conta 2 do cliente 2.
-        Conta conta3 = new Conta(789, 40, cliente2);
+        Conta conta3 = new ContaPoupanca(789, 40, cliente2);
         System.out.println("Quantidade de contas do Banco Maut: " + Conta.getQuantidadeDeContas());
 
         System.out.println("-----------Início do teste de depositar e transferir----------");
@@ -58,6 +58,28 @@ public class TestaApp {
         System.out.println("Tranferencia concluida. Seu saldo (conta3) é de: " + conta3.getSaldo());
         System.out.println("Sua conta (cliente1) agora tem o saldo de: " + conta1.getSaldo());
         System.out.println("-----------Fim de teste----------");
+
+        //Cliente 3.
+        Cliente cliente3 = new Cliente("Márcia", "639482111", LocalDate.of(2004, 3, 17), new Endereco("log3", 833, "Junco", "Picos", "PI"));
+        
+        //Conta 1 do cliente 3.
+        Conta conta4 = new ContaCorrente(5, 2, cliente3);
+        //Conta 2 do cliente 3
+        Conta conta5 = new ContaPoupanca(1, 4, cliente3);
+
+        System.out.println("$$$$$$$$$$ Início de testes para conta corrente e poupança $$$$$$$$$$");
+        conta4.depositar(100);
+        conta5.depositar(100);
+
+        conta4.sacar(50);
+        conta5.sacar(50);
+
+        conta4.sacar(150);
+        conta5.sacar(150);
+
+        System.out.println("Seu saldo (conta4) é de: " + conta4.getSaldo());
+        System.out.println("Seu saldo (conta5) é de: " + conta5.getSaldo());
+        System.out.println("$$$$$$$$$$ Fim de testes $$$$$$$$$$");
     }
 }
         
